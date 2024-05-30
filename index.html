@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOMMENDATIONS BY MBTI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<style>
+* {margin:0;padding:0;box-sizing:border-box;}
+ul, li {list-style:none;}
+
+
+.slidebox {max-width:700px;margin:0 auto;position:relative;}
+.slidebox .slidelist {position:relative;white-space:nowrap;font-size:0;overflow:hidden;}
+.slidebox .slidelist .slideitem {position:relative;display:inline-block;vertical-align:middle;background-color:#fff;width:100%;transition:all 1s;}
+.slidebox .slidelist .slideitem > a {display:block;width:auto;position:relative;}
+.slidebox .slidelist .slideitem > a img {max-width:100%;}
+
+.slidebox .slide-control [class*="control"] label {position:absolute;z-index:10;top:50%;transform:translateY(-50%);padding:20px;border-radius:50%;cursor:pointer;}
+.slidebox .slide-control [class*="control"] label.prev {left:-50px;background:white url('https://www.iconpacks.net/icons/2/free-icon-arrow-left-3099.png') center center / 50% no-repeat;}
+.slidebox .slide-control [class*="control"] label.next {right:-50px;background:white url('https://www.iconpacks.net/icons/2/free-icon-arrow-right-3098.png') center center / 50% no-repeat;}
+
+[name="slide"] {display:none;}
+#slide01:checked ~ .slidelist .slideitem {left:0;}
+#slide02:checked ~ .slidelist .slideitem {left:-100%;}
+#slide03:checked ~ .slidelist .slideitem {left:-200%;}
+#slide04:checked ~ .slidelist .slideitem {left:-300%;}
+#slide05:checked ~ .slidelist .slideitem {left:-400%;}
+#slide06:checked ~ .slidelist .slideitem {left:-500%;}
+#slide07:checked ~ .slidelist .slideitem {left:-600%;}
+#slide08:checked ~ .slidelist .slideitem {left:-700%;}
+#slide09:checked ~ .slidelist .slideitem {left:-800%;}
+#slide10:checked ~ .slidelist .slideitem {left:-900%;}
+#slide11:checked ~ .slidelist .slideitem {left:-1000%;}
+#slide12:checked ~ .slidelist .slideitem {left:-1100%;}
+#slide13:checked ~ .slidelist .slideitem {left:-1200%;}
+#slide14:checked ~ .slidelist .slideitem {left:-1300%;}
+#slide15:checked ~ .slidelist .slideitem {left:-1400%;}
+#slide16:checked ~ .slidelist .slideitem {left:-1500%;}
+
+
+.slide-control [class*="control"] {display:none;}
+#slide01:checked ~ .slide-control .control01 {display:block;}
+#slide02:checked ~ .slide-control .control02 {display:block;}
+#slide03:checked ~ .slide-control .control03 {display:block;}
+#slide04:checked ~ .slide-control .control04 {display:block;}
+#slide05:checked ~ .slide-control .control05 {display:block;}
+#slide06:checked ~ .slide-control .control06 {display:block;}
+#slide07:checked ~ .slide-control .control07 {display:block;}
+#slide08:checked ~ .slide-control .control08 {display:block;}
+#slide09:checked ~ .slide-control .control09 {display:block;}
+#slide10:checked ~ .slide-control .control10 {display:block;}
+#slide11:checked ~ .slide-control .control11 {display:block;}
+#slide12:checked ~ .slide-control .control12 {display:block;}
+#slide13:checked ~ .slide-control .control13 {display:block;}
+#slide14:checked ~ .slide-control .control14 {display:block;}
+#slide15:checked ~ .slide-control .control15 {display:block;}
+#slide16:checked ~ .slide-control .control16 {display:block;}
+
+li.slideitem a{
+	text-align: center;
+}
+</style>
+<style>
+    .search {
+       display: flex;
+       align-items: center;
+    }
+    .search input {
+       width: 148px;
+       height: 24px;
+       font-size: 14px;
+       border: none;
+       border-bottom: 1px black solid;
+       margin-right: 10px;
+    }
+
+    .search button {
+       font-size: 35px;
+       border: none;
+       background-color: white;
+       padding: 6px 12px;
+       border-radius: 15px;
+       color: black;
+       cursor: pointer;
+    }
+    
+    * {
+        margin: 0; padding: 0;
+        box-sizing: border-box;
+    }
+    
+    .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        width: 100%;
+        position: relative;
+    }
+
+    h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: lighter;
+        text-align: center;
+        margin: 0;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .container {
+        overflow: visible;
+        width: 1080px;
+        margin: 0 auto;
+        margin-bottom: 8px;  
+        display: flex;
+        justify-content: center;
+        text-align: center; 
+    }
+
+
+    .gnb {
+        padding: 8px 0px;
+        display: inline-block;
+        margin-left: 125px;
+        margin-right: 125px;
+        margin-bottom: -1px;
+        text-align: center;
+        position: relative;
+        font-size: 18px;
+        z-index: 9999;
+        list-style-type: none;
+        top: -1px;
+    }
+    .gnb > a {
+        list-style-type: none;
+        margin-left: 10px;
+        line-height: 10px;
+        display: inline-block;
+    }
+    .gnb > a:first-child {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-left: 40px;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .gnb :hover {
+        color: darkblue;
+    }
+    .gnb :active {
+        color: black;
+    }
+
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    div.section {
+        border: 1px solid black;
+        margin: 3px;
+        padding: 10px;
+    }
+    a {
+        text-decoration: none;
+        color: darkgray;
+    }
+    .header img {
+        margin-top: 4px;
+    }
+    @media screen and (max-width: 767px) {
+        .header {
+            flex-direction: column;
+            padding: 80px;
+        }
+        .header h1 {
+                margin-top: 80px;
+        }
+        .container {
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .gnb {
+                margin-bottom: 8px;
+                font-size: 21px;
+        }
+        .slidebox {
+            flex-direction: column;
+            align-items: center;
+            padding-left: 0;
+            text-align: center;
+            width: 250px;
+            height: 200px;
+            margin-bottom: 150px;
+        }
+        .search {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: 70px;
+        top: 20px;
+        }
+        .search input {
+        width: 148px;
+        height: 24px;
+        font-size: 14px;
+        border: none;
+        border-bottom: 1px black solid;
+        margin: 0 auto;
+        display: block;
+        }
+
+        .search button {
+        font-size: 35px;
+        border: none;
+        float: right;
+        background-color: white;
+        padding: 6px 12px;
+        border-radius: 15px;
+        color: black;
+        cursor: pointer;
+        float: right;
+
+        }
+        body { position: relative;}
+        .header img { 
+                position: absolute;
+                top: 30px;
+                right: 20px;
+
+                
+        }
+        
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 959px) {
+        .header {
+            flex-direction: column;
+            padding: 80px;
+        }
+        .header h1 {
+                margin-top: 80px;
+        }
+        .container {
+            width: 100%;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .gnb {
+                margin-bottom: 8px;
+                font-size: 23px;
+        }
+        .slidebox {
+            flex-direction: column;
+            align-items: center;
+            padding-left: 0;
+            text-align: center;
+            margin-bottom: 150px;
+            width: 350px;
+            height: 300px;
+        }
+        .search {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: 70px;
+        top: 20px;
+        }
+        .search input {
+        width: 148px;
+        height: 24px;
+        font-size: 14px;
+        border: none;
+        border-bottom: 1px black solid;
+        margin: 0 auto;
+        display: block;
+        float: right;
+        }
+
+        .search button {
+        font-size: 35px;
+        border: none;
+        background-color: white;
+        padding: 6px 12px;
+        border-radius: 15px;
+        color: black;
+        cursor: pointer;
+        float: right;
+
+        }
+        body { position: relative;}
+        .header img { 
+                position: absolute;
+                right: 20px;
+                top: 30px;
+
+                
+        }
+    }
+</style>
+
+<body>
+	<div class="header">
+        <h1>RECOMMENDATIONS BY <b>MBTI</b> TYPE</h1>
+        <form action="https://search.naver.com/search.naver" style="margin-left: auto;">
+            <div class="search">
+                <input type="text" name="query" value="">
+                <button type="submit">⌕</button>
+            </div>
+        </form>
+        &nbsp;&nbsp;&nbsp;
+        <a href="https://wulwu.github.io/qnaafter/">
+            <img src="https://cdn-icons-png.flaticon.com/512/2608/2608207.png" alt="Q&A" width="30">
+        </a>
+        &nbsp;&nbsp;
+    </div>
+
+    <br>
+    <hr>
+    <div class="container">
+        <ul class="gnb">
+            <a href="https://wulwu.github.io/mbtibuttonpage/">MBTI</a>
+        </ul>
+        <ul class="gnb">
+            <a href="https://google.com">BOOK</a>
+        </ul>
+        <ul class="gnb">
+            <a href="https://naver.com">MUSIC</a>
+        </ul>
+        <ul class="gnb">
+            <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC">TEST</a>
+        </ul>
+    </div>
+    <hr><br><br><br><br>
+
+<div class="slidebox">
+	<input type="radio" name="slide" id="slide01" checked>
+	<input type="radio" name="slide" id="slide02">
+	<input type="radio" name="slide" id="slide03">
+	<input type="radio" name="slide" id="slide04">
+	<input type="radio" name="slide" id="slide05">
+	<input type="radio" name="slide" id="slide06">
+	<input type="radio" name="slide" id="slide07">
+	<input type="radio" name="slide" id="slide08">
+	<input type="radio" name="slide" id="slide09">
+	<input type="radio" name="slide" id="slide10">
+	<input type="radio" name="slide" id="slide11">
+	<input type="radio" name="slide" id="slide12">
+	<input type="radio" name="slide" id="slide13">
+	<input type="radio" name="slide" id="slide14">
+	<input type="radio" name="slide" id="slide15">
+	<input type="radio" name="slide" id="slide16">
+	<ul class="slidelist">
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/enfp-campaigner.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/entp-debater.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/entj-commander.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/enfj-protagonist.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/esfp-entertainer.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/estp-entrepreneur.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/esfj-consul.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/estj-executive.png"></a>
+		</li>
+
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/intp-logician.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/intj-architect.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/infp-mediator.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/infj-advocate.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/isfp-adventurer.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/isfj-defender.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/istp-virtuoso.png"></a>
+		</li>
+		<li class="slideitem">
+			<a><img src="https://www.16personalities.com/static/images/personality-types/avatars/istj-logistician.png"></a>
+		</li>
+		
+	</ul>
+	<div class="slide-control">
+		<div class="control01">
+			<label for="slide16" class="prev"></label>
+			<label for="slide02" class="next"></label>
+		</div>
+		<div class="control02">
+			<label for="slide01" class="prev"></label>
+			<label for="slide03" class="next"></label>
+		</div>
+		<div class="control03">
+			<label for="slide02" class="prev"></label>
+			<label for="slide04" class="next"></label>
+		</div>
+		<div class="control04">
+			<label for="slide03" class="prev"></label>
+			<label for="slide05" class="next"></label>
+		</div>
+		<div class="control05">
+			<label for="slide04" class="prev"></label>
+			<label for="slide06" class="next"></label>
+		</div>
+		<div class="control06">
+			<label for="slide05" class="prev"></label>
+			<label for="slide07" class="next"></label>
+		</div>
+		<div class="control07">
+			<label for="slide06" class="prev"></label>
+			<label for="slide08" class="next"></label>
+		</div>
+		<div class="control08">
+			<label for="slide07" class="prev"></label>
+			<label for="slide09" class="next"></label>
+		</div>
+		<div class="control09">
+			<label for="slide08" class="prev"></label>
+			<label for="slide10" class="next"></label>
+		</div>
+		<div class="control10">
+			<label for="slide09" class="prev"></label>
+			<label for="slide11" class="next"></label>
+		</div>
+		<div class="control11">
+			<label for="slide10" class="prev"></label>
+			<label for="slide12" class="next"></label>
+		</div>
+		<div class="control12">
+			<label for="slide11" class="prev"></label>
+			<label for="slide13" class="next"></label>
+		</div>
+		<div class="control13">
+			<label for="slide12" class="prev"></label>
+			<label for="slide14" class="next"></label>
+		</div>
+		<div class="control14">
+			<label for="slide13" class="prev"></label>
+			<label for="slide15" class="next"></label>
+		</div>
+		<div class="control15">
+			<label for="slide14" class="prev"></label>
+			<label for="slide16" class="next"></label>
+		</div>
+		<div class="control16">
+			<label for="slide15" class="prev"></label>
+			<label for="slide01" class="next"></label>
+		</div>
+	</div>
+</div>
+</body>
+</html>
